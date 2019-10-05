@@ -6,6 +6,8 @@ import Jama.Matrix;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 
 /**
@@ -23,7 +25,7 @@ public class SVD {
 
         double[][] a = new double[rows][columns];
 
-        BufferedReader br = new BufferedReader(new FileReader("/Users/soamya.agrawal/Desktop/BITS_Assignment/Information_Retrieval/Recommender_System/recommender_system/src/main/resources/movies.csv"));
+        BufferedReader br = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/movies.csv")));
         HashMap<Integer, Integer> hmap = new HashMap<>();
         int i;
         br.readLine();
@@ -38,7 +40,7 @@ public class SVD {
         br.close();
 
         // read user,movie and rating from file 
-        BufferedReader br1 = new BufferedReader(new FileReader("/Users/soamya.agrawal/Desktop/BITS_Assignment/Information_Retrieval/Recommender_System/recommender_system/src/main/resources/ratings20.csv"));
+        BufferedReader br1 = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/ratings20.csv")));
         br1.readLine();
         int l;
         int m;
