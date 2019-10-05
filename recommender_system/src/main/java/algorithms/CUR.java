@@ -41,7 +41,7 @@ public class CUR {
 
         double r;
         int numMovies = 0;
-        int[] cToNumMovies = new int[] {0,0,5,81,101,172,198,205,274,300,315,333,343,358,375,377,646,651,733,784,1120,1170};
+        int[] cToNumMovies = new int[]{0, 0, 5, 81, 101, 172, 198, 205, 274, 300, 315, 333, 343, 358, 375, 377, 646, 651, 733, 784, 1120, 1170};
         numMovies = cToNumMovies[c];
         for (i = 0; i < numMovies; i++) {
             String line = br1.readLine();
@@ -429,7 +429,7 @@ public class CUR {
                 }
             }
         }
-        double [] [] temp3 = new double[c][c];
+        double[][] temp3 = new double[c][c];
         for (i = 0; i < c; i++) { // aRow
             for (j = 0; j < c; j++) { // bColumn
                 for (k = 0; k < c; k++) { // aColumn

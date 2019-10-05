@@ -45,7 +45,7 @@ public class SVD {
         int j;
         double r;
         int numMovies = 0;
-        int[] rowsToNumMovies = new int[] {0,0,5,81,101,172,198,205,274,300,315,333,343,358,375,377,646,651,733,784,1120,1170};
+        int[] rowsToNumMovies = new int[]{0, 0, 5, 81, 101, 172, 198, 205, 274, 300, 315, 333, 343, 358, 375, 377, 646, 651, 733, 784, 1120, 1170};
         numMovies = rowsToNumMovies[rows];
         for (i = 0; i < numMovies; i++) {
             String line = br1.readLine();
