@@ -1,0 +1,9 @@
+# java class files
+*.class
+
+# IDE
+.idea/
+
+# JAR
+jars/
+*.jar

@@ -26,7 +26,7 @@ public class SVD {
     	columns=1000;
 double a[][] = new double[rows][columns];
         
-        BufferedReader br = new BufferedReader(new FileReader("E:/3-1/information retrieval/IRAssignment-2/data/movies.csv"));
+        BufferedReader br = new BufferedReader(new FileReader("./dataset/movies.csv"));
         HashMap<Integer, Integer> hmap = new HashMap<>();
         int i;
         br.readLine();
@@ -41,7 +41,7 @@ double a[][] = new double[rows][columns];
         br.close();
         
         // read user,movie and rating from file 
-        BufferedReader br1 = new BufferedReader(new FileReader("E:/3-1/information retrieval/IRAssignment-2/data/ratings20.csv"));
+        BufferedReader br1 = new BufferedReader(new FileReader("./dataset/ratings20.csv"));
         br1.readLine();
         int l,m,j;
         double r;

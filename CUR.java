@@ -24,7 +24,7 @@ public class CUR {
 		int l, m, j, i;
         double a[][] = new double[21][1000];
         double b[][] = new double[21][1000];
-        BufferedReader br = new BufferedReader(new FileReader("E:/3-1/information retrieval/IRAssignment-2/data/movies.csv"));
+        BufferedReader br = new BufferedReader(new FileReader("./dataset/movies.csv"));
         HashMap<Integer, Integer> hmap = new HashMap<>();
 
         br.readLine();
@@ -38,8 +38,8 @@ public class CUR {
 
         br.close();
 
-        // read user,movie and rating from file 
-        BufferedReader br1 = new BufferedReader(new FileReader("E:/3-1/information retrieval/IRAssignment-2/data/ratings20.csv"));
+        // read user,movie and rating from file
+        BufferedReader br1 = new BufferedReader(new FileReader("./dataset/ratings20.csv"));
         br1.readLine();
 
         double r;
@@ -99,14 +99,14 @@ public class CUR {
         case 19:
         	numMovies=784;
         	break;
-        
+
         case 20:
         	numMovies=1120;
         	break;
         case 21:
         	numMovies=1170;
         break;
-        		
+
         }
         for (i = 0; i < numMovies; i++) {
             String line = br1.readLine();
@@ -132,10 +132,10 @@ public class CUR {
             System.out.println();
         }*/
         Matrix matA = new Matrix(a);
-        
+
        // int c = matA.rank()/10;
         double colp[] = new double[1000], sum = 0;
-        //setting c matrix 
+        //setting c matrix
         for (i = 0; i < 1000; i++) {
             for (j = 0; j < 21; j++) {
                 //System.out.println(colp[i]);
@@ -173,18 +173,18 @@ public class CUR {
         //double column[][]=new double[21][1000];
         int k = 0;
         int coli[] = new int[c];
-        
+
         for (i = 0; i < c; i++) {
-            int rann = ran.nextInt(1000); //column number 
+            int rann = ran.nextInt(1000); //column number
             if(colp[rann]!=0){
                 coli[i] = rann;
             }else{
                 --i;
             }
         }
-        
+
         for (i = 0; i < c; i++) {
-            
+
 //            System.out.println("The seed is:" + rann + " ");
             for (j = 0; j < 21; j++) {
                 column[j][k] = b[j][coli[i]] / Math.sqrt(c * colp[coli[i]]);
@@ -199,7 +199,7 @@ public class CUR {
         k = 0;
 
         for (i = 0; i < c; i++) {
-            int rann = ran.nextInt(20) + 1; //row number 
+            int rann = ran.nextInt(20) + 1; //row number
             if(rowp[rann]!=0){
                 rowi[i] = rann;
             }else{
@@ -225,7 +225,7 @@ public class CUR {
             }
             System.out.println();
         }
-        
+
         System.out.println();
         for (i = 0; i < c; i++) {
             System.out.println(rowi[i] + " ");
@@ -247,7 +247,7 @@ public class CUR {
                 System.out.print(w[i][j] + " ");
                 //w[i][j]=b[rowi[i]][coli[i]];
             }
-            System.out.println(); 
+            System.out.println();
         } */
 //        double w[][] = {{0, 1000}, {1000, 0}};
 
@@ -462,7 +462,7 @@ public class CUR {
 //            System.out.println();
         }
 
-        //Y matrix 
+        //Y matrix
         double y[][] = new double[c][c];
         for (i = 0; i < c; i++) {
             for (j = 0; j < c; j++) {
@@ -501,7 +501,7 @@ public class CUR {
                 }
             }
         }
-        
+
     /*    System.out.println("**********************************************************");
         System.out.println("CUR's U Matrix");
         System.out.println("**********************************************************");
@@ -558,5 +558,5 @@ public class CUR {
         hmap.clear();
         return error;
 	}
-   
+
 }
