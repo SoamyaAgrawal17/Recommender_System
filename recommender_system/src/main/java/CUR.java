@@ -19,7 +19,7 @@ public class CUR {
         int i;
         double[][] a = new double[21][1000];
         double[][] b = new double[21][1000];
-        BufferedReader br = new BufferedReader(new FileReader("movies.csv"));
+        BufferedReader br = new BufferedReader(new FileReader("/Users/soamya.agrawal/Desktop/BITS_Assignment/Information_Retrieval/Recommender_System/recommender_system/src/main/resources/movies.csv"));
         HashMap<Integer, Integer> hmap = new HashMap<>();
 
         br.readLine();
@@ -27,14 +27,14 @@ public class CUR {
         //read movie file , store values in the array.
         for (i = 0; i < 1000; i++) {
             String line = br.readLine();
-            String line1[] = line.split(",");
+            String[] line1 = line.split(",");
             hmap.put(Integer.parseInt(line1[0]), i);
         }
 
         br.close();
 
         // read user,movie and rating from file
-        BufferedReader br1 = new BufferedReader(new FileReader("ratings20.csv"));
+        BufferedReader br1 = new BufferedReader(new FileReader("/Users/soamya.agrawal/Desktop/BITS_Assignment/Information_Retrieval/Recommender_System/recommender_system/src/main/resources/ratings20.csv"));
         br1.readLine();
 
         double r;

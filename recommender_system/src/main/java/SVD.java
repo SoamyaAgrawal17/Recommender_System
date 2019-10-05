@@ -1,118 +1,121 @@
 import Jama.EigenvalueDecomposition;
 import Jama.Matrix;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
+
 /**
- *
  * @author Soamya Agrawal
  */
 public class SVD {
 
     /**
-     * @param rows the number of rows
+     * @param rows    the number of rows
      * @param columns the number of columns
      * @throws java.io.IOException
      */
-    
-    public double getSVDError(int rows, int columns) throws IOException{
-    	columns=1000;
-double a[][] = new double[rows][columns];
-        
-        BufferedReader br = new BufferedReader(new FileReader("../resources/movies.csv"));
+
+    public double getSVDError(int rows, int columns) throws IOException {
+
+        double[][] a = new double[rows][columns];
+
+        BufferedReader br = new BufferedReader(new FileReader("/Users/soamya.agrawal/Desktop/BITS_Assignment/Information_Retrieval/Recommender_System/recommender_system/src/main/resources/movies.csv"));
         HashMap<Integer, Integer> hmap = new HashMap<>();
         int i;
         br.readLine();
-        
+
         //read movie file , store values in the array.
         for (i = 0; i < columns; i++) {
             String line = br.readLine();
-            String line1[] = line.split(",");
+            String[] line1 = line.split(",");
             hmap.put(Integer.parseInt(line1[0]), i);
         }
-        
+
         br.close();
-        
+
         // read user,movie and rating from file 
-        BufferedReader br1 = new BufferedReader(new FileReader("ratings20.csv"));
+        BufferedReader br1 = new BufferedReader(new FileReader("/Users/soamya.agrawal/Desktop/BITS_Assignment/Information_Retrieval/Recommender_System/recommender_system/src/main/resources/ratings20.csv"));
         br1.readLine();
-        int l,m,j;
+        int l;
+        int m;
+        int j;
         double r;
-        int numMovies=0;
-        switch(rows){
-        case 2:
-        	numMovies=5;
-        	break;
-        case 3:
-        	numMovies=81;
-        	break;
-        case 4:
-        	numMovies=101;
-        	break;
-        case 5:
-        	numMovies=172;
-        	break;
-        case 6:
-        	numMovies=198;
-        	break;
-        case 7:
-        	numMovies=205;
-        	break;
-        case 8:
-        	numMovies=274;
-        	break;
-        case 9:
-        	numMovies=300;
-        	break;
-        case 10:
-        	numMovies=315;
-        	break;
-        case 11:
-        	numMovies=333;
-        	break;
-        case 12:
-        	numMovies=343;
-        	break;
-        case 13:
-        	numMovies=358;
-        	break;
-        case 14:
-        	numMovies=375;
-        	break;
-        case 15:
-        	numMovies=377;
-        	break;
-        case 16:
-        	numMovies=646;
-        	break;
-        case 17:
-        	numMovies=651;
-        	break;
-        case 18:
-        	numMovies=733;
-        	break;
-        case 19:
-        	numMovies=784;
-        	break;
-        
-        case 20:
-        	numMovies=1120;
-        	break;
-        case 21:
-        	numMovies=1170;
-        break;
-        		
+        int numMovies = 0;
+        switch (rows) {
+            case 2:
+                numMovies = 5;
+                break;
+            case 3:
+                numMovies = 81;
+                break;
+            case 4:
+                numMovies = 101;
+                break;
+            case 5:
+                numMovies = 172;
+                break;
+            case 6:
+                numMovies = 198;
+                break;
+            case 7:
+                numMovies = 205;
+                break;
+            case 8:
+                numMovies = 274;
+                break;
+            case 9:
+                numMovies = 300;
+                break;
+            case 10:
+                numMovies = 315;
+                break;
+            case 11:
+                numMovies = 333;
+                break;
+            case 12:
+                numMovies = 343;
+                break;
+            case 13:
+                numMovies = 358;
+                break;
+            case 14:
+                numMovies = 375;
+                break;
+            case 15:
+                numMovies = 377;
+                break;
+            case 16:
+                numMovies = 646;
+                break;
+            case 17:
+                numMovies = 651;
+                break;
+            case 18:
+                numMovies = 733;
+                break;
+            case 19:
+                numMovies = 784;
+                break;
+
+            case 20:
+                numMovies = 1120;
+                break;
+            case 21:
+                numMovies = 1170;
+                break;
+
         }
         for (i = 0; i < numMovies; i++) {
             String line = br1.readLine();
             String line2[] = line.split(",");
             l = Integer.parseInt(line2[0]);
-            
+
             m = hmap.get(Integer.parseInt(line2[1]));
             r = Double.parseDouble(line2[2]);
             a[l][m] = r;
-            
+
         }
 
         br1.close();
@@ -146,11 +149,11 @@ double a[][] = new double[rows][columns];
             }
             System.out.println();
         }*/
-        
+
         //multiply a (rowsxcolumns) with atranspose (columnsxrows) to Matrix U
         double u[][] = new double[rows][rows];
-        for (i = 0; i < rows; i++) { 
-            for (j = 0; j < rows; j++) { 
+        for (i = 0; i < rows; i++) {
+            for (j = 0; j < rows; j++) {
                 for (int k = 0; k < columns; k++) {
                     u[i][j] += a[i][k] * at[k][j];
                 }
@@ -179,7 +182,7 @@ double a[][] = new double[rows][columns];
             for (j = 0; j < rows; j++) {
                 if (sigmaa[i][j] < 0) {
                     sigmaa[i][j] = 0;
-                   
+
                 }
                 //System.out.print(sigmaa[i][j] + " ");
             }
@@ -188,22 +191,22 @@ double a[][] = new double[rows][columns];
         }
 
         //multiply at (columnsxrows) with a (rowsxcolumns) to obtain U transpose matrix
-        double uT[][] = new double[columns][columns];
-        for (i = 0; i < columns; i++) { 
-            for (j = 0; j < columns; j++) { 
-                for (int k = 0; k < rows; k++) { 
+        double[][] uT = new double[columns][columns];
+        for (i = 0; i < columns; i++) {
+            for (j = 0; j < columns; j++) {
+                for (int k = 0; k < rows; k++) {
                     uT[i][j] += at[i][k] * a[k][j];
                 }
             }
         }
-        
+
         Matrix mNew = new Matrix(uT);
         EigenvalueDecomposition evd1 = new EigenvalueDecomposition(mNew);
 
         Matrix m11 = evd1.getV();
-        double b1[][] = m11.getArray();
+        double[][] b1 = m11.getArray();
 
-        double b1t[][] = new double[columns][columns];
+        double[][] b1t = new double[columns][columns];
         for (i = 0; i < columns; i++) {
             for (j = 0; j < columns; j++) {
                 b1t[j][i] = b1[i][j];
@@ -244,7 +247,7 @@ double a[][] = new double[rows][columns];
             sigmaa[rows - i - 1][rows - i - 1] = temp;
         }
 
-        double sigmaFinal[][] = new double[rows][columns];
+        double[][] sigmaFinal = new double[rows][columns];
         for (i = 0; i < rows; i++) {
             for (j = 0; j < rows; j++) {
                 sigmaa[i][j] = Math.sqrt(sigmaa[i][j]);
@@ -280,10 +283,10 @@ double a[][] = new double[rows][columns];
             System.out.println();
         }*/
 
-        double temp1[][] = new double[rows][columns];
-        for (i = 0; i < rows; i++) { 
+        double[][] temp1 = new double[rows][columns];
+        for (i = 0; i < rows; i++) {
             for (j = 0; j < columns; j++) {
-                for (int k = 0; k < columns; k++) { 
+                for (int k = 0; k < columns; k++) {
                     temp1[i][j] += (a[i][k] * b1[k][j]);
                 }
             }
@@ -299,19 +302,19 @@ double a[][] = new double[rows][columns];
             System.out.println();
         }*/
 
-        double finalU[][] = new double[rows][rows];
+        double[][] finalU = new double[rows][rows];
         for (i = 0; i < rows; i++) {
             for (j = 0; j < rows; j++) {
-                if(sigmaFinal[j][j]!=0){
+                if (sigmaFinal[j][j] != 0) {
                     finalU[i][j] = temp1[i][j] / sigmaFinal[j][j];
                 }
             }
         }
 
-        double temp2[][] = new double[rows][columns];
-        for (i = 0; i < rows; i++) { 
-            for (j = 0; j < columns; j++) { 
-                for (int k = 0; k < rows; k++) { 
+        double[][] temp2 = new double[rows][columns];
+        for (i = 0; i < rows; i++) {
+            for (j = 0; j < columns; j++) {
+                for (int k = 0; k < rows; k++) {
                     temp2[i][j] += sigmaa[i][k] * temp1[k][j];
                 }
             }
@@ -328,25 +331,25 @@ double a[][] = new double[rows][columns];
             }
             System.out.println();
         }*/
-        
+
         double error = 0;
         int k = 0;
-        
+
         // Calculating U * Sigma Matrix
-        double usigcal[][] = new double[rows][columns];
-        for (i = 0; i < rows; i++) { 
-            for (j = 0; j < columns; j++) { 
-                for (k = 0; k < rows; k++) { 
+        double[][] usigcal = new double[rows][columns];
+        for (i = 0; i < rows; i++) {
+            for (j = 0; j < columns; j++) {
+                for (k = 0; k < rows; k++) {
                     usigcal[i][j] += finalU[i][k] * sigmaFinal[k][j];
                 }
             }
         }
 
         // Calcuating U * Sigma * V Transpose matrix
-        double amatcal[][] = new double[rows][columns];
-        for (i = 0; i < rows; i++) { 
-            for (j = 0; j < columns; j++) { 
-                for (k = 0; k < columns; k++) { 
+        double[][] amatcal = new double[rows][columns];
+        for (i = 0; i < rows; i++) {
+            for (j = 0; j < columns; j++) {
+                for (k = 0; k < columns; k++) {
                     amatcal[i][j] += usigcal[i][k] * b1t[k][j];
                 }
             }
@@ -377,5 +380,5 @@ double a[][] = new double[rows][columns];
         hmap.clear();
         return error;
     }
-   
+
 }
