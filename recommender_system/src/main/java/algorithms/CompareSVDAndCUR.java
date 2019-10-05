@@ -32,7 +32,7 @@ public class CompareSVDAndCUR implements Serializable {
 
 
             } catch (IOException e) {
-                e.printStackTrace();
+                log.error(e.getMessage());
             }
 
         }
