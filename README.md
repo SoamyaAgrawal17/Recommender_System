@@ -1,10 +1,10 @@
 # Recommender_System
-SVD vs CUR DECOMPOSITION
+SVD vs CUR DECOMPOSITION \n
 It implements both the SVD and the CUR Matrix Decomposition algorithms and compares the efficiency of both these approaches (In terms of space, time etc.). 
 It also shows the instances where SVD is better, and instances where CURis better. 
 The pseudocode for the algorithms can be found in the slides.
 
-Tips and Tricks:
+Tips and Tricks:\n
 Since CUR Decomposition involves use of random rows and columns for decomposing the matrix (Random Number Generator), a seed has been used to ensure that output remains consistent over multiple runs.
 Corpus:
 The Rating or Review dataset used is .
