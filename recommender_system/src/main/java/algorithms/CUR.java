@@ -1,3 +1,5 @@
+package algorithms;
+
 import Jama.EigenvalueDecomposition;
 import Jama.Matrix;
 
@@ -437,7 +439,7 @@ public class CUR {
         }
 
     /*    System.out.println("**********************************************************");
-        System.out.println("CUR's U Matrix");
+        System.out.println("algorithms.CUR's U Matrix");
         System.out.println("**********************************************************");
         for (i = 0; i < c; i++) {
             for (j = 0; j < c; j++) {

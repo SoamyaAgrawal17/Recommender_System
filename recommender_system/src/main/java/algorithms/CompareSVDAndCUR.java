@@ -1,3 +1,5 @@
+package algorithms;
+
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
@@ -18,14 +20,14 @@ public class CompareSVDAndCUR implements Serializable {
 
                 long endTime = System.currentTimeMillis();
                 long totalTime = endTime - startTime;
-                log.info("SVD time is " + totalTime);
+                log.info("algorithms.SVD time is " + totalTime);
                 log.info("SVDError " + i + "rows and " + "1000 columns " + svdError);
 
                 long startTime1 = System.currentTimeMillis();
                 double curError = cur.getCURError(i);
                 long endTime1 = System.currentTimeMillis();
                 long totalTime1 = endTime1 - startTime1;
-                log.info("CUR time is " + totalTime1);
+                log.info("algorithms.CUR time is " + totalTime1);
                 log.info("CURError " + i + "rows and " + i + "columns " + curError);
 
 

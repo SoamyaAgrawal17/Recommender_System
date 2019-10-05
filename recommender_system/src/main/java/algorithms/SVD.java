@@ -1,3 +1,5 @@
+package algorithms;
+
 import Jama.EigenvalueDecomposition;
 import Jama.Matrix;
 
