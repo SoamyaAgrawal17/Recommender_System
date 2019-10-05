@@ -1,25 +1,25 @@
-package IRRecommenderSystem;
-
 import Jama.EigenvalueDecomposition;
 import Jama.Matrix;
+
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Random;
 
 /**
- *
  * @author Soamya Agrawal
  */
 public class CUR {
 
-	public double getCURError(int c) throws IOException{
-		int l, m, j, i;
-        double a[][] = new double[21][1000];
-        double b[][] = new double[21][1000];
-        BufferedReader br = new BufferedReader(new FileReader("./dataset/movies.csv"));
+    public double getCURError(int c) throws IOException {
+        int l;
+        int m;
+        int j;
+        int i;
+        double[][] a = new double[21][1000];
+        double[][] b = new double[21][1000];
+        BufferedReader br = new BufferedReader(new FileReader("movies.csv"));
         HashMap<Integer, Integer> hmap = new HashMap<>();
 
         br.readLine();
@@ -34,78 +34,78 @@ public class CUR {
         br.close();
 
         // read user,movie and rating from file
-        BufferedReader br1 = new BufferedReader(new FileReader("./dataset/ratings20.csv"));
+        BufferedReader br1 = new BufferedReader(new FileReader("ratings20.csv"));
         br1.readLine();
 
         double r;
-        int numMovies=0;
-        switch(c){
-        case 2:
-        	numMovies=5;
-        	break;
-        case 3:
-        	numMovies=81;
-        	break;
-        case 4:
-        	numMovies=101;
-        	break;
-        case 5:
-        	numMovies=172;
-        	break;
-        case 6:
-        	numMovies=198;
-        	break;
-        case 7:
-        	numMovies=205;
-        	break;
-        case 8:
-        	numMovies=274;
-        	break;
-        case 9:
-        	numMovies=300;
-        	break;
-        case 10:
-        	numMovies=315;
-        	break;
-        case 11:
-        	numMovies=333;
-        	break;
-        case 12:
-        	numMovies=343;
-        	break;
-        case 13:
-        	numMovies=358;
-        	break;
-        case 14:
-        	numMovies=375;
-        	break;
-        case 15:
-        	numMovies=377;
-        	break;
-        case 16:
-        	numMovies=646;
-        	break;
-        case 17:
-        	numMovies=651;
-        	break;
-        case 18:
-        	numMovies=733;
-        	break;
-        case 19:
-        	numMovies=784;
-        	break;
+        int numMovies = 0;
+        switch (c) {
+            case 2:
+                numMovies = 5;
+                break;
+            case 3:
+                numMovies = 81;
+                break;
+            case 4:
+                numMovies = 101;
+                break;
+            case 5:
+                numMovies = 172;
+                break;
+            case 6:
+                numMovies = 198;
+                break;
+            case 7:
+                numMovies = 205;
+                break;
+            case 8:
+                numMovies = 274;
+                break;
+            case 9:
+                numMovies = 300;
+                break;
+            case 10:
+                numMovies = 315;
+                break;
+            case 11:
+                numMovies = 333;
+                break;
+            case 12:
+                numMovies = 343;
+                break;
+            case 13:
+                numMovies = 358;
+                break;
+            case 14:
+                numMovies = 375;
+                break;
+            case 15:
+                numMovies = 377;
+                break;
+            case 16:
+                numMovies = 646;
+                break;
+            case 17:
+                numMovies = 651;
+                break;
+            case 18:
+                numMovies = 733;
+                break;
+            case 19:
+                numMovies = 784;
+                break;
 
-        case 20:
-        	numMovies=1120;
-        	break;
-        case 21:
-        	numMovies=1170;
-        break;
+            case 20:
+                numMovies = 1120;
+                break;
+            case 21:
+                numMovies = 1170;
+                break;
 
         }
         for (i = 0; i < numMovies; i++) {
             String line = br1.readLine();
-            String line2[] = line.split(",");
+            String[] line2 = line.split(",");
             l = Integer.parseInt(line2[0]);
             m = hmap.get(Integer.parseInt(line2[1]));
             r = Double.parseDouble(line2[2]);
@@ -126,10 +126,11 @@ public class CUR {
             }
             System.out.println();
         }*/
-        Matrix matA = new Matrix(a);
+        //Matrix matA = new Matrix(a);
 
-       // int c = matA.rank()/10;
-        double colp[] = new double[1000], sum = 0;
+        // int c = matA.rank()/10;
+        double[] colp = new double[1000];
+        double sum = 0;
         //setting c matrix
         for (i = 0; i < 1000; i++) {
             for (j = 0; j < 21; j++) {
@@ -145,11 +146,11 @@ public class CUR {
 
         for (i = 0; i < 1000; i++) {
             colp[i] = colp[i] / sum;
-           // System.out.print(i + " " + colp[i] + " ");
+            // System.out.print(i + " " + colp[i] + " ");
         }
 
         System.out.println();
-        double rowp[] = new double[21];
+        double[] rowp = new double[21];
         //setting r matrix
         for (i = 0; i < 21; i++) {
             for (j = 0; j < 1000; j++) {
@@ -159,21 +160,21 @@ public class CUR {
 
         for (i = 0; i < 21; i++) {
             rowp[i] = rowp[i] / sum;
-           // System.out.print(i + " " + rowp[i] + " ");
+            // System.out.print(i + " " + rowp[i] + " ");
         }
 
         Random ran = new Random();
         ran.setSeed(123456789);
-        double column[][] = new double[21][c];
-        //double column[][]=new double[21][1000];
+        double[][] column = new double[21][c];
+        //double[][] column=new double[21][1000];
         int k = 0;
-        int coli[] = new int[c];
+        int[] coli = new int[c];
 
         for (i = 0; i < c; i++) {
             int rann = ran.nextInt(1000); //column number
-            if(colp[rann]!=0){
+            if (colp[rann] != 0) {
                 coli[i] = rann;
-            }else{
+            } else {
                 --i;
             }
         }
@@ -189,15 +190,15 @@ public class CUR {
             k++;
         }
         System.out.println();
-        double row[][] = new double[c][1000];
-        int rowi[] = new int[c];
+        double[][] row = new double[c][1000];
+        int[] rowi = new int[c];
         k = 0;
 
         for (i = 0; i < c; i++) {
             int rann = ran.nextInt(20) + 1; //row number
-            if(rowp[rann]!=0){
+            if (rowp[rann] != 0) {
                 rowi[i] = rann;
-            }else{
+            } else {
                 --i;
             }
         }
@@ -227,7 +228,7 @@ public class CUR {
         }
         System.out.println();*/
         //w matrix
-        double w[][] = new double[c][c];
+        double[][] w = new double[c][c];
         for (i = 0; i < c; i++) {
             for (j = 0; j < c; j++) {
                 w[i][j] = b[rowi[i]][coli[j]];
@@ -244,10 +245,10 @@ public class CUR {
             }
             System.out.println();
         } */
-//        double w[][] = {{0, 1000}, {1000, 0}};
+//        double[][] w = {{0, 1000}, {1000, 0}};
 
 //        c = 2;
-        double at[][] = new double[c][c];
+        double[][] at = new double[c][c];
         for (i = 0; i < c; i++) {
             for (j = 0; j < c; j++) {
                 at[j][i] = w[i][j];
@@ -263,7 +264,7 @@ public class CUR {
             System.out.println();
         }*/
         //multiply a (cxc) with atranspose (cxc) to Matrix U
-        double u[][] = new double[c][c];
+        double[][] u = new double[c][c];
         for (i = 0; i < c; i++) {
             for (j = 0; j < c; j++) {
                 for (k = 0; k < c; k++) {
@@ -281,10 +282,10 @@ public class CUR {
         Matrix mat = new Matrix(u);
         EigenvalueDecomposition evd = new EigenvalueDecomposition(mat);
         Matrix sigma = evd.getD();
-        double sigmaa[][] = sigma.getArray();
+        double[][] sigmaa = sigma.getArray();
 
         Matrix m1 = evd.getV();
-        double eigenU[][] = m1.getArray();
+        double[][] eigenU = m1.getArray();
 
 //        System.out.println("**********************************************************");
 //        System.out.println("**********************************************************");
@@ -301,7 +302,7 @@ public class CUR {
         }
 
         //multiply at (cxc) with a (cxc) to obtain U transpose matrix
-        double uT[][] = new double[c][c];
+        double[][] uT = new double[c][c];
         for (i = 0; i < c; i++) {
             for (j = 0; j < c; j++) {
                 for (k = 0; k < c; k++) {
@@ -314,9 +315,9 @@ public class CUR {
         EigenvalueDecomposition evd1 = new EigenvalueDecomposition(mNew);
 
         Matrix m11 = evd1.getV();
-        double b1[][] = m11.getArray();
+        double[][] b1 = m11.getArray();
 
-        double b1t[][] = new double[c][c];
+        double[][] b1t = new double[c][c];
         for (i = 0; i < c; i++) {
             for (j = 0; j < c; j++) {
                 b1t[j][i] = b1[i][j];
@@ -357,7 +358,7 @@ public class CUR {
             sigmaa[c - i - 1][c - i - 1] = temp;
         }
 
-        double sigmaFinal[][] = new double[c][c];
+        double[][] sigmaFinal = new double[c][c];
         for (i = 0; i < c; i++) {
             for (j = 0; j < c; j++) {
                 sigmaa[i][j] = Math.sqrt(sigmaa[i][j]);
@@ -395,7 +396,7 @@ public class CUR {
             System.out.println();
         }*/
 
-        double temp1[][] = new double[c][c];
+        double[][] temp1 = new double[c][c];
         for (i = 0; i < c; i++) {
             for (j = 0; j < c; j++) {
                 for (k = 0; k < c; k++) {
@@ -414,7 +415,7 @@ public class CUR {
             System.out.println();
         } */
 
-        double finalU[][] = new double[c][c];
+        double[][] finalU = new double[c][c];
         for (i = 0; i < c; i++) {
             for (j = 0; j < c; j++) {
                 if (sigmaFinal[j][j] != 0) {
@@ -423,7 +424,7 @@ public class CUR {
             }
         }
 
-        double temp2[][] = new double[c][c];
+        double[][] temp2 = new double[c][c];
         for (i = 0; i < c; i++) {
             for (j = 0; j < c; j++) {
                 for (k = 0; k < c; k++) {
@@ -458,21 +459,21 @@ public class CUR {
         }
 
         //Y matrix
-        double y[][] = new double[c][c];
+        double[][] y = new double[c][c];
         for (i = 0; i < c; i++) {
             for (j = 0; j < c; j++) {
                 y[j][i] = b1[i][j];
             }
         }
         // xTmatrix
-        double xt[][] = new double[c][c];
+        double[][] xt = new double[c][c];
         for (i = 0; i < c; i++) {
             for (j = 0; j < c; j++) {
                 xt[j][i] = finalU[i][j];
             }
         }
 
-        double temp4[][] = new double[c][c];
+        double[][] temp4 = new double[c][c];
         for (i = 0; i < c; i++) { // aRow
             for (j = 0; j < c; j++) { // bColumn
                 for (k = 0; k < c; k++) { // aColumn
@@ -480,7 +481,7 @@ public class CUR {
                 }
             }
         }
-        double temp5[][] = new double[c][c];
+        double[][] temp5 = new double[c][c];
         for (i = 0; i < c; i++) { // aRow
             for (j = 0; j < c; j++) { // bColumn
                 for (k = 0; k < c; k++) { // aColumn
@@ -488,7 +489,7 @@ public class CUR {
                 }
             }
         }
-        double temp3[][] = new double[c][c];
+        double [] [] temp3 = new double[c][c];
         for (i = 0; i < c; i++) { // aRow
             for (j = 0; j < c; j++) { // bColumn
                 for (k = 0; k < c; k++) { // aColumn
@@ -509,7 +510,7 @@ public class CUR {
 */
         double error = 0;
         // Calculating C * U Matrix
-        double cucal[][] = new double[21][c];
+        double[][] cucal = new double[21][c];
         for (i = 0; i < 21; i++) {
             for (j = 0; j < c; j++) {
                 for (k = 0; k < c; k++) {
@@ -519,7 +520,7 @@ public class CUR {
         }
 
         // Calcuating C * U * R  matrix
-        double curcal[][] = new double[21][1000];
+        double[][] curcal = new double[21][1000];
         for (i = 0; i < 21; i++) {
             for (j = 0; j < 1000; j++) {
                 for (k = 0; k < c; k++) {
@@ -552,6 +553,6 @@ public class CUR {
         System.out.println("**********************************************************"); */
         hmap.clear();
         return error;
-	}
+    }
 
 }

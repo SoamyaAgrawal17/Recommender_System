@@ -1,10 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package IRRecommenderSystem;
-
 import Jama.EigenvalueDecomposition;
 import Jama.Matrix;
 import java.io.BufferedReader;
@@ -13,20 +6,21 @@ import java.io.IOException;
 import java.util.HashMap;
 /**
  *
- * @author Soamya
+ * @author Soamya Agrawal
  */
 public class SVD {
 
     /**
-     * @param args the command line arguments
+     * @param rows the number of rows
+     * @param columns the number of columns
      * @throws java.io.IOException
      */
     
-    public double getSVDError(int rows,int columns) throws IOException{
+    public double getSVDError(int rows, int columns) throws IOException{
     	columns=1000;
 double a[][] = new double[rows][columns];
         
-        BufferedReader br = new BufferedReader(new FileReader("./dataset/movies.csv"));
+        BufferedReader br = new BufferedReader(new FileReader("../resources/movies.csv"));
         HashMap<Integer, Integer> hmap = new HashMap<>();
         int i;
         br.readLine();
@@ -41,7 +35,7 @@ double a[][] = new double[rows][columns];
         br.close();
         
         // read user,movie and rating from file 
-        BufferedReader br1 = new BufferedReader(new FileReader("./dataset/ratings20.csv"));
+        BufferedReader br1 = new BufferedReader(new FileReader("ratings20.csv"));
         br1.readLine();
         int l,m,j;
         double r;
