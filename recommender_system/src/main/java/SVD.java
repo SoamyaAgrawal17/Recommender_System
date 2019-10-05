@@ -109,7 +109,7 @@ public class SVD {
         }
         for (i = 0; i < numMovies; i++) {
             String line = br1.readLine();
-            String line2[] = line.split(",");
+            String[] line2 = line.split(",");
             l = Integer.parseInt(line2[0]);
 
             m = hmap.get(Integer.parseInt(line2[1]));
@@ -134,7 +134,7 @@ public class SVD {
 */
         //let's make U matrix
         //transpose of A matrix
-        double at[][] = new double[columns][rows];
+        double[][] at = new double[columns][rows];
         for (i = 0; i < rows; i++) {
             for (j = 0; j < columns; j++) {
                 at[j][i] = a[i][j];
@@ -151,7 +151,7 @@ public class SVD {
         }*/
 
         //multiply a (rowsxcolumns) with atranspose (columnsxrows) to Matrix U
-        double u[][] = new double[rows][rows];
+        double[][] u = new double[rows][rows];
         for (i = 0; i < rows; i++) {
             for (j = 0; j < rows; j++) {
                 for (int k = 0; k < columns; k++) {
@@ -170,10 +170,10 @@ public class SVD {
         Matrix mat = new Matrix(u);
         EigenvalueDecomposition evd = new EigenvalueDecomposition(mat);
         Matrix sigma = evd.getD();
-        double sigmaa[][] = sigma.getArray();
+        double[][] sigmaa = sigma.getArray();
 
         Matrix m1 = evd.getV();
-        double b[][] = m1.getArray();
+        double[][] b = m1.getArray();
 
 //        System.out.println("**********************************************************");
 //        System.out.println("**********************************************************");
