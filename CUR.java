@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package IRRecommenderSystem;
 
 import Jama.EigenvalueDecomposition;
@@ -16,7 +11,7 @@ import java.util.Random;
 
 /**
  *
- * @author Soamya
+ * @author Soamya Agrawal
  */
 public class CUR {
 
