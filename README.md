@@ -8,9 +8,7 @@ Tips and Tricks:
 Since CUR Decomposition involves use of random rows and columns for decomposing the matrix (Random Number Generator), a seed has been used to ensure that output remains consistent over multiple runs.
 Corpus:
 The Rating or Review dataset used is .
-1. Amazon Book Reviews
-2. Book Crossing
-3. LibRec
+MovieLens Latest Datasets (https://grouplens.org/datasets/movielens/)
 Programming Language used: Java
 Additional Information:
 The core of both the SVD and CUR Decomposition algorithms is coded.
