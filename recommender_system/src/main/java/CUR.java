@@ -39,70 +39,8 @@ public class CUR {
 
         double r;
         int numMovies = 0;
-        switch (c) {
-            case 2:
-                numMovies = 5;
-                break;
-            case 3:
-                numMovies = 81;
-                break;
-            case 4:
-                numMovies = 101;
-                break;
-            case 5:
-                numMovies = 172;
-                break;
-            case 6:
-                numMovies = 198;
-                break;
-            case 7:
-                numMovies = 205;
-                break;
-            case 8:
-                numMovies = 274;
-                break;
-            case 9:
-                numMovies = 300;
-                break;
-            case 10:
-                numMovies = 315;
-                break;
-            case 11:
-                numMovies = 333;
-                break;
-            case 12:
-                numMovies = 343;
-                break;
-            case 13:
-                numMovies = 358;
-                break;
-            case 14:
-                numMovies = 375;
-                break;
-            case 15:
-                numMovies = 377;
-                break;
-            case 16:
-                numMovies = 646;
-                break;
-            case 17:
-                numMovies = 651;
-                break;
-            case 18:
-                numMovies = 733;
-                break;
-            case 19:
-                numMovies = 784;
-                break;
-
-            case 20:
-                numMovies = 1120;
-                break;
-            case 21:
-                numMovies = 1170;
-                break;
-
-        }
+        int[] cToNumMovies = new int[] {0,0,5,81,101,172,198,205,274,300,315,333,343,358,375,377,646,651,733,784,1120,1170};
+        numMovies = cToNumMovies[c];
         for (i = 0; i < numMovies; i++) {
             String line = br1.readLine();
             String[] line2 = line.split(",");
