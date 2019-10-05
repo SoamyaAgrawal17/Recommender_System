@@ -2,6 +2,7 @@ package algorithms;
 
 import Jama.EigenvalueDecomposition;
 import Jama.Matrix;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -14,6 +15,7 @@ import java.util.Random;
 /**
  * @author Soamya Agrawal
  */
+@Slf4j
 public class CUR {
 
     public double getCURError(int c) throws IOException {
@@ -58,15 +60,15 @@ public class CUR {
         br1.close();
 
         //matrix A Obtained from the given data
-     /*   System.out.println();
-        System.out.println("**********************************************************");
-        System.out.println("A Matrix");
-        System.out.println("**********************************************************");
+     /*   log.info();
+        log.info("**********************************************************");
+        log.info("A Matrix");
+        log.info("**********************************************************");
         for (i = 0; i < 21; i++) {
             for (j = 0; j < 1000; j++) {
                 System.out.print(a[i][j] + " ");
             }
-            System.out.println();
+            log.info();
         }*/
         //Matrix matA = new Matrix(a);
 
@@ -76,14 +78,14 @@ public class CUR {
         //setting c matrix
         for (i = 0; i < 1000; i++) {
             for (j = 0; j < 21; j++) {
-                //System.out.println(colp[i]);
+                //log.info(colp[i]);
                 colp[i] = (b[j][i] * b[j][i]) + colp[i];
             }
-            // System.out.println(colp[i]);
+            // log.info(colp[i]);
             sum = sum + colp[i];
 
         }
-//        System.out.println(sum);
+//        log.info(sum);
 
 
         for (i = 0; i < 1000; i++) {
@@ -91,7 +93,7 @@ public class CUR {
             // System.out.print(i + " " + colp[i] + " ");
         }
 
-        System.out.println();
+        log.info("\n");
         double[] rowp = new double[21];
         //setting r matrix
         for (i = 0; i < 21; i++) {
@@ -123,15 +125,15 @@ public class CUR {
 
         for (i = 0; i < c; i++) {
 
-//            System.out.println("The seed is:" + rann + " ");
+//            log.info("The seed is:" + rann + " ");
             for (j = 0; j < 21; j++) {
                 column[j][k] = b[j][coli[i]] / Math.sqrt(c * colp[coli[i]]);
 //                System.out.print(column[j][k] + " ");
             }
-//            System.out.println();
+//            log.info();
             k++;
         }
-        System.out.println();
+        log.info("\n");
         double[][] row = new double[c][1000];
         int[] rowi = new int[c];
         k = 0;
@@ -152,23 +154,23 @@ public class CUR {
                 row[k][j] = b[rowi[i]][j] / Math.sqrt(c * rowp[rowi[i]]);
 //                System.out.print(row[k][j] + " ");
             }
-//            System.out.println();
+//            log.info();
             k++;
         }
 
-        /*System.out.println("C matrix");
+        /*log.info("C matrix");
         for (i = 0; i < c; i++) {
             for(j = 0; j <c ;j++){
             System.out.print(column[j][i] + " ");
             }
-            System.out.println();
+            log.info();
         }
 
-        System.out.println();
+        log.info();
         for (i = 0; i < c; i++) {
-            System.out.println(rowi[i] + " ");
+            log.info(rowi[i] + " ");
         }
-        System.out.println();*/
+        log.info();*/
         //w matrix
         double[][] w = new double[c][c];
         for (i = 0; i < c; i++) {
@@ -177,15 +179,15 @@ public class CUR {
             }
         }
 
-    /*    System.out.println("**********************************************************");
-        System.out.println("W matrix");
-        System.out.println("**********************************************************");
+    /*    log.info("**********************************************************");
+        log.info("W matrix");
+        log.info("**********************************************************");
         for (i = 0; i < c; i++) {
             for (j = 0; j < c; j++) {
                 System.out.print(w[i][j] + " ");
                 //w[i][j]=b[rowi[i]][coli[i]];
             }
-            System.out.println();
+            log.info();
         } */
 //        double[][] w = {{0, 1000}, {1000, 0}};
 
@@ -203,7 +205,7 @@ public class CUR {
             for (j = 0; j < c; j++) {
                 System.out.print(at[i][j] + " ");
             }
-            System.out.println();
+            log.info();
         }*/
         //multiply a (cxc) with atranspose (cxc) to Matrix U
         double[][] u = new double[c][c];
@@ -219,7 +221,7 @@ public class CUR {
             for (j = 0; j < c; j++) {
                 System.out.print(u[i][j] + " ");
             }
-            System.out.println();
+            log.info();
         }*/
         Matrix mat = new Matrix(u);
         EigenvalueDecomposition evd = new EigenvalueDecomposition(mat);
@@ -229,9 +231,9 @@ public class CUR {
         Matrix m1 = evd.getV();
         double[][] eigenU = m1.getArray();
 
-//        System.out.println("**********************************************************");
-//        System.out.println("**********************************************************");
-//        System.out.println("Sigma matrix");
+//        log.info("**********************************************************");
+//        log.info("**********************************************************");
+//        log.info("Sigma matrix");
         for (i = 0; i < c; i++) {
             for (j = 0; j < c; j++) {
                 if (sigmaa[i][j] < 0) {
@@ -240,7 +242,7 @@ public class CUR {
                 //System.out.print(sigmaa[i][j] + " ");
             }
 
-//            System.out.println();
+//            log.info();
         }
 
         //multiply at (cxc) with a (cxc) to obtain U transpose matrix
@@ -283,14 +285,14 @@ public class CUR {
             }
         }
 
-   /*     System.out.println("**********************************************************");
-        System.out.println("U matrix");
-        System.out.println("**********************************************************");
+   /*     log.info("**********************************************************");
+        log.info("U matrix");
+        log.info("**********************************************************");
         for (i = 0; i < c; i++) {
             for (j = 0; j < c; j++) {
                 System.out.print(eigenU[i][j] + "    ");
             }
-            System.out.println();
+            log.info();
         } */
 
         //for sigma matrix Arranging the terms in decreasing order
@@ -308,15 +310,15 @@ public class CUR {
             }
         }
 
-   /*     System.out.println();
-        System.out.println("**********************************************************");
-        System.out.println("Sigma Final matrix");
-        System.out.println("**********************************************************");
+   /*     log.info();
+        log.info("**********************************************************");
+        log.info("Sigma Final matrix");
+        log.info("**********************************************************");
         for (i = 0; i < c; i++) {
             for (j = 0; j < c; j++) {
                 System.out.print(sigmaFinal[i][j] + "     ");
             }
-            System.out.println();
+            log.info();
         } */
 
         //for v transpose matrix arranging the terms in Decreasing order
@@ -328,14 +330,14 @@ public class CUR {
             }
         }
 
-     /*   System.out.println("**********************************************************");
-        System.out.println("V Transpose matrix");
-        System.out.println("**********************************************************");
+     /*   log.info("**********************************************************");
+        log.info("V Transpose matrix");
+        log.info("**********************************************************");
         for (i = 0; i < c; i++) {
             for (j = 0; j < c; j++) {
                 System.out.print(b1t[i][j] + "    ");
             }
-            System.out.println();
+            log.info();
         }*/
 
         double[][] temp1 = new double[c][c];
@@ -346,15 +348,15 @@ public class CUR {
                 }
             }
         }
-     /*   System.out.println();
-        System.out.println("**********************************************************");
-        System.out.println("Calculated W*V matrix calculating U");
-        System.out.println("**********************************************************");
+     /*   log.info();
+        log.info("**********************************************************");
+        log.info("Calculated W*V matrix calculating U");
+        log.info("**********************************************************");
         for (i = 0; i < c; i++) {
             for (j = 0; j < c; j++) {
                 System.out.print(temp1[i][j] + "    ");
             }
-            System.out.println();
+            log.info();
         } */
 
         double[][] finalU = new double[c][c];
@@ -379,15 +381,15 @@ public class CUR {
          * Calulating U matrix for known V matrix so that we get unique eigen
          * values*
          */
-     /*   System.out.println();
-        System.out.println("**********************************************************");
-        System.out.println("Calculated U matrix");
-        System.out.println("**********************************************************");
+     /*   log.info();
+        log.info("**********************************************************");
+        log.info("Calculated U matrix");
+        log.info("**********************************************************");
         for (i = 0; i < c; i++) {
             for (j = 0; j < c; j++) {
                 System.out.print(finalU[i][j] + "    ");
             }
-            System.out.println();
+            log.info();
         }
 */
         for (i = 0; i < c; i++) {
@@ -397,7 +399,7 @@ public class CUR {
                     sigmaFinal[i][j] = 1 / sigmaFinal[i][j];
                 }
             }
-//            System.out.println();
+//            log.info();
         }
 
         //Y matrix
@@ -440,14 +442,14 @@ public class CUR {
             }
         }
 
-    /*    System.out.println("**********************************************************");
-        System.out.println("algorithms.CUR's U Matrix");
-        System.out.println("**********************************************************");
+    /*    log.info("**********************************************************");
+        log.info("algorithms.CUR's U Matrix");
+        log.info("**********************************************************");
         for (i = 0; i < c; i++) {
             for (j = 0; j < c; j++) {
                 System.out.print(temp3[i][j] + " ");
             }
-            System.out.println();
+            log.info();
         }
 */
         double error = 0;
@@ -478,21 +480,21 @@ public class CUR {
             }
         }
 
-    /*    System.out.println();
-        System.out.println("**********************************************************");
-        System.out.println("Calculated finally the A matrix");
-        System.out.println("**********************************************************");
+    /*    log.info();
+        log.info("**********************************************************");
+        log.info("Calculated finally the A matrix");
+        log.info("**********************************************************");
         for (i = 0; i < 21; i++) {
             for (j = 0; j < 1000; j++) {
                 System.out.print(curcal[i][j] + "    ");
             }
-            System.out.println();
+            log.info();
         } */
         error = Math.sqrt(error);
-      /*  System.out.println();
-        System.out.println("**********************************************************");
-        System.out.println("Error is  " + error);
-        System.out.println("**********************************************************"); */
+      /*  log.info();
+        log.info("**********************************************************");
+        log.info("Error is  " + error);
+        log.info("**********************************************************"); */
         hmap.clear();
         return error;
     }
