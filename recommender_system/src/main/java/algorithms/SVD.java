@@ -61,15 +61,15 @@ public class SVD {
         br1.close();
 
         //matrix a Obtained from the given data
-        /*System.out.println();
-        System.out.println("**********************************************************");
-        System.out.println("A Matrix");
-        System.out.println("**********************************************************");
+        /*log.info();
+        log.info("**********************************************************");
+        log.info("A Matrix");
+        log.info("**********************************************************");
         for (i = 0; i < rows; i++) {
             for (j = 0; j < columns; j++) {
-                System.out.print(a[i][j] + " ");
+                log.info(a[i][j] + " ");
             }
-            System.out.println();
+            log.info();
         }
 */
         //let's make U matrix
@@ -85,9 +85,9 @@ public class SVD {
         // printing a transpose matrix
         for (i = 0; i < columns; i++) {
             for (j = 0; j < rows; j++) {
-                System.out.print(at[i][j] + " ");
+                log.info(at[i][j] + " ");
             }
-            System.out.println();
+            log.info();
         }*/
 
         //multiply a (rowsxcolumns) with atranspose (columnsxrows) to Matrix U
@@ -102,9 +102,9 @@ public class SVD {
 
        /* for (i = 0; i < rows; i++) {
             for (j = 0; j < rows; j++) {
-                System.out.print(u[i][j] + " ");
+                log.info(u[i][j] + " ");
             }
-            System.out.println();
+            log.info();
         }*/
 
         Matrix mat = new Matrix(u);
@@ -115,19 +115,19 @@ public class SVD {
         Matrix m1 = evd.getV();
         double[][] b = m1.getArray();
 
-//        System.out.println("**********************************************************");
-//        System.out.println("**********************************************************");
-//        System.out.println("Sigma matrix");
+//        log.info("**********************************************************");
+//        log.info("**********************************************************");
+//        log.info("Sigma matrix");
         for (i = 0; i < rows; i++) {
             for (j = 0; j < rows; j++) {
                 if (sigmaa[i][j] < 0) {
                     sigmaa[i][j] = 0;
 
                 }
-                //System.out.print(sigmaa[i][j] + " ");
+                //log.info(sigmaa[i][j] + " ");
             }
 
-//            System.out.println();
+//            log.info();
         }
 
         //multiply at (columnsxrows) with a (rowsxcolumns) to obtain U transpose matrix
@@ -170,14 +170,14 @@ public class SVD {
             }
         }
         
-        /*System.out.println("**********************************************************");
-        System.out.println("**********************************************************");
-        System.out.println("U matrix");
+        /*log.info("**********************************************************");
+        log.info("**********************************************************");
+        log.info("U matrix");
         for (i = 0; i < rows; i++) {
             for (j = 0; j < rows; j++) {
-                System.out.print(b[i][j] + "    ");
+                log.info(b[i][j] + "    ");
             }
-            System.out.println();
+            log.info();
         }*/
 
         //for sigma matrix Arranging the terms in decreasing order
@@ -195,15 +195,15 @@ public class SVD {
             }
         }
 
-     /*   System.out.println();
-        System.out.println("**********************************************************");
-        System.out.println("Sigma Final matrix");
-        System.out.println("**********************************************************");
+     /*   log.info();
+        log.info("**********************************************************");
+        log.info("Sigma Final matrix");
+        log.info("**********************************************************");
         for (i = 0; i < rows; i++) {
             for (j = 0; j < columns; j++) {
-                System.out.print(sigmaFinal[i][j] + "     ");
+                log.info(sigmaFinal[i][j] + "     ");
             }
-            System.out.println();
+            log.info();
         }
 */
         //for v transpose matrix arranging the terms in Decreasing order
@@ -215,12 +215,12 @@ public class SVD {
             }
         }
 
-        /*System.out.println("V Transpose matrix");
+        /*log.info("V Transpose matrix");
         for (i = 0; i < columns; i++) {
             for (j = 0; j < columns; j++) {
-                System.out.print(b1t[i][j] + "    ");
+                log.info(b1t[i][j] + "    ");
             }
-            System.out.println();
+            log.info();
         }*/
 
         double[][] temp1 = new double[rows][columns];
@@ -231,15 +231,15 @@ public class SVD {
                 }
             }
         }
-/*System.out.println();
-        System.out.println("**********************************************************");
-        System.out.println("Calculated A*V matrix");
-        System.out.println("**********************************************************");
+/*log.info();
+        log.info("**********************************************************");
+        log.info("Calculated A*V matrix");
+        log.info("**********************************************************");
         for (i = 0; i < rows; i++) {
             for (j = 0; j < columns; j++) {
-                System.out.print(temp1[i][j] + "    ");
+                log.info(temp1[i][j] + "    ");
             }
-            System.out.println();
+            log.info();
         }*/
 
         double[][] finalU = new double[rows][rows];
@@ -261,15 +261,15 @@ public class SVD {
         }
 
         /**Calulating U matrix for known V matrix so that we get unique eigen values**/
-/*System.out.println();
-        System.out.println("**********************************************************");
-        System.out.println("Calculated U matrix");
-        System.out.println("**********************************************************");
+/*log.info();
+        log.info("**********************************************************");
+        log.info("Calculated U matrix");
+        log.info("**********************************************************");
         for (i = 0; i < rows; i++) {
             for (j = 0; j < rows; j++) {
-                System.out.print(finalU[i][j] + "    ");
+                log.info(finalU[i][j] + "    ");
             }
-            System.out.println();
+            log.info();
         }*/
 
         double error = 0;
@@ -302,21 +302,21 @@ public class SVD {
             }
         }
 
-      /*  System.out.println();
-        System.out.println("**********************************************************");
-        System.out.println("Calculated finally the A matrix");
-        System.out.println("**********************************************************");
+      /*  log.info();
+        log.info("**********************************************************");
+        log.info("Calculated finally the A matrix");
+        log.info("**********************************************************");
         for (i = 0; i < rows; i++) {
             for (j = 0; j < columns; j++) {
-                System.out.print(amatcal[i][j] + "    ");
+                log.info(amatcal[i][j] + "    ");
             }
-            System.out.println();
+            log.info();
         }*/
         error = Math.sqrt(error);
-       /* System.out.println();
-        System.out.println("**********************************************************");
-        System.out.println("Error is  " + error);
-        System.out.println("**********************************************************");*/
+       /* log.info();
+        log.info("**********************************************************");
+        log.info("Error is  " + error);
+        log.info("**********************************************************");*/
         hmap.clear();
         return error;
     }
