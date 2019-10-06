@@ -64,7 +64,7 @@ public class CUR {
         log.info("**********************************************************");
         for (i = 0; i < 21; i++) {
             for (j = 0; j < 1000; j++) {
-                System.out.print(a[i][j] + " ");
+                log.info(a[i][j] + " ");
             }
             log.info();
         }*/
@@ -88,7 +88,7 @@ public class CUR {
 
         for (i = 0; i < 1000; i++) {
             colp[i] = colp[i] / sum;
-            // System.out.print(i + " " + colp[i] + " ");
+            // log.info(i + " " + colp[i] + " ");
         }
 
         log.info("\n");
@@ -102,7 +102,7 @@ public class CUR {
 
         for (i = 0; i < 21; i++) {
             rowp[i] = rowp[i] / sum;
-            // System.out.print(i + " " + rowp[i] + " ");
+            // log.info(i + " " + rowp[i] + " ");
         }
 
         Random ran = new Random();
@@ -126,7 +126,7 @@ public class CUR {
 //            log.info("The seed is:" + rann + " ");
             for (j = 0; j < 21; j++) {
                 column[j][k] = b[j][coli[i]] / Math.sqrt(c * colp[coli[i]]);
-//                System.out.print(column[j][k] + " ");
+//                log.info(column[j][k] + " ");
             }
 //            log.info();
             k++;
@@ -147,10 +147,10 @@ public class CUR {
 
         for (i = 0; i < c; i++) {
 
-            //System.out.print("The seed is:" + rann + " ");
+            //log.info("The seed is:" + rann + " ");
             for (j = 0; j < 1000; j++) {
                 row[k][j] = b[rowi[i]][j] / Math.sqrt(c * rowp[rowi[i]]);
-//                System.out.print(row[k][j] + " ");
+//                log.info(row[k][j] + " ");
             }
 //            log.info();
             k++;
@@ -159,7 +159,7 @@ public class CUR {
         /*log.info("C matrix");
         for (i = 0; i < c; i++) {
             for(j = 0; j <c ;j++){
-            System.out.print(column[j][i] + " ");
+            log.info(column[j][i] + " ");
             }
             log.info();
         }
@@ -182,7 +182,7 @@ public class CUR {
         log.info("**********************************************************");
         for (i = 0; i < c; i++) {
             for (j = 0; j < c; j++) {
-                System.out.print(w[i][j] + " ");
+                log.info(w[i][j] + " ");
                 //w[i][j]=b[rowi[i]][coli[i]];
             }
             log.info();
@@ -201,7 +201,7 @@ public class CUR {
         // printing a transpose matrix
         for (i = 0; i < c; i++) {
             for (j = 0; j < c; j++) {
-                System.out.print(at[i][j] + " ");
+                log.info(at[i][j] + " ");
             }
             log.info();
         }*/
@@ -217,7 +217,7 @@ public class CUR {
 
         /* for (i = 0; i < c; i++) {
             for (j = 0; j < c; j++) {
-                System.out.print(u[i][j] + " ");
+                log.info(u[i][j] + " ");
             }
             log.info();
         }*/
@@ -237,7 +237,7 @@ public class CUR {
                 if (sigmaa[i][j] < 0) {
                     sigmaa[i][j] = 0;
                 }
-                //System.out.print(sigmaa[i][j] + " ");
+                //log.info(sigmaa[i][j] + " ");
             }
 
 //            log.info();
@@ -288,7 +288,7 @@ public class CUR {
         log.info("**********************************************************");
         for (i = 0; i < c; i++) {
             for (j = 0; j < c; j++) {
-                System.out.print(eigenU[i][j] + "    ");
+                log.info(eigenU[i][j] + "    ");
             }
             log.info();
         } */
@@ -314,7 +314,7 @@ public class CUR {
         log.info("**********************************************************");
         for (i = 0; i < c; i++) {
             for (j = 0; j < c; j++) {
-                System.out.print(sigmaFinal[i][j] + "     ");
+                log.info(sigmaFinal[i][j] + "     ");
             }
             log.info();
         } */
@@ -333,7 +333,7 @@ public class CUR {
         log.info("**********************************************************");
         for (i = 0; i < c; i++) {
             for (j = 0; j < c; j++) {
-                System.out.print(b1t[i][j] + "    ");
+                log.info(b1t[i][j] + "    ");
             }
             log.info();
         }*/
@@ -352,7 +352,7 @@ public class CUR {
         log.info("**********************************************************");
         for (i = 0; i < c; i++) {
             for (j = 0; j < c; j++) {
-                System.out.print(temp1[i][j] + "    ");
+                log.info(temp1[i][j] + "    ");
             }
             log.info();
         } */
@@ -385,14 +385,14 @@ public class CUR {
         log.info("**********************************************************");
         for (i = 0; i < c; i++) {
             for (j = 0; j < c; j++) {
-                System.out.print(finalU[i][j] + "    ");
+                log.info(finalU[i][j] + "    ");
             }
             log.info();
         }
 */
         for (i = 0; i < c; i++) {
             for (j = 0; j < c; j++) {
-//                System.out.print(sigmaFinal[i][j] + "     ");
+//                log.info(sigmaFinal[i][j] + "     ");
                 if (sigmaFinal[i][j] != 0) {
                     sigmaFinal[i][j] = 1 / sigmaFinal[i][j];
                 }
@@ -445,7 +445,7 @@ public class CUR {
         log.info("**********************************************************");
         for (i = 0; i < c; i++) {
             for (j = 0; j < c; j++) {
-                System.out.print(temp3[i][j] + " ");
+                log.info(temp3[i][j] + " ");
             }
             log.info();
         }
@@ -484,7 +484,7 @@ public class CUR {
         log.info("**********************************************************");
         for (i = 0; i < 21; i++) {
             for (j = 0; j < 1000; j++) {
-                System.out.print(curcal[i][j] + "    ");
+                log.info(curcal[i][j] + "    ");
             }
             log.info();
         } */
