@@ -7,6 +7,8 @@ import lombok.extern.slf4j.Slf4j;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Random;
 
@@ -23,7 +25,7 @@ public class CUR {
         int i;
         double[][] a = new double[21][1000];
         double[][] b = new double[21][1000];
-        BufferedReader br = new BufferedReader(new FileReader("/Users/soamya.agrawal/Desktop/BITS_Assignment/Information_Retrieval/Recommender_System/recommender_system/src/main/resources/movies.csv"));
+        BufferedReader br = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/movies.csv"), StandardCharsets.UTF_8));
         HashMap<Integer, Integer> hmap = new HashMap<>();
 
         br.readLine();
@@ -38,7 +40,7 @@ public class CUR {
         br.close();
 
         // read user,movie and rating from file
-        BufferedReader br1 = new BufferedReader(new FileReader("/Users/soamya.agrawal/Desktop/BITS_Assignment/Information_Retrieval/Recommender_System/recommender_system/src/main/resources/ratings20.csv"));
+        BufferedReader br1 = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/ratings20.csv"), StandardCharsets.UTF_8));
         br1.readLine();
 
         double r;
