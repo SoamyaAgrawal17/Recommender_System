@@ -1,7 +1,7 @@
 # Recommender_System
 SVD vs CUR DECOMPOSITION 
 It implements both the SVD and the CUR Matrix Decomposition algorithms and compares the efficiency of both these approaches (In terms of space, time etc.). 
-It also shows the instances where SVD is better, and instances where CURis better. 
+It also shows the instances where SVD is better, and instances where CUR is better. 
 The pseudo code for the algorithms can be found in the slides.
 
 Tips and Tricks:
